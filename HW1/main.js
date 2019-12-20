@@ -27,9 +27,6 @@ let book = {
   price: 300,
   nameOfBublisher: 'Azbuka',
   quantity: 30,
-  getBookAttributes: function(){
-    return book;
-  },
 }
 console.log(book);
 

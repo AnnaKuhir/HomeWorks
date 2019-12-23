@@ -51,11 +51,13 @@ getInformation(25) //Floor: 9, Porch: 1
 //5
 const foo = (number) =>{
   if(number%2==0){
-    console.log( eval(number.toString().split('').join('+')) ); 
+    let sum = eval(number.toString().split('').join('+'));
+    console.log(sum); 
   } else{
-    console.log(eval(number.toString().split('').join('*')))
+    let mul = eval(number.toString().split('').join('*'));
+    console.log(mul);
   }
 }
-foo(312); //6
+foo(314); //6
 foo(125);  //10
 

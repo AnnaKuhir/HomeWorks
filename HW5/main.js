@@ -161,7 +161,7 @@ function CustomString() {
     //------------------2-----------------------
     strVal = '';
     str = str.split(' ');
-    for (var i = 0; i < str.length; i++) {
+    for (let i = 0; i < str.length; i++) {
       strVal += str[i].substring(0, 1).toUpperCase() + str[i].substring(1, str[i].length) + ' '
     }
     console.log(strVal);
@@ -203,9 +203,13 @@ function Validator(){
     }
   }
 
+  const isDigit = function isNumeric(str) {
+    return /^\d+$/.test(str);
+  }
+  
   this.checkIsDate = str =>{
     let arr = str.split('.');
-    if(arr[0] <= 31 && arr[1] <= 12 && arr[2].length === 4){
+    if(arr[0] <= 31 && arr[1] <= 12 && isDigit(arr[2]) && arr[2].length === 4){
       console.log('true');
       return true;
     } else {
@@ -213,6 +217,7 @@ function Validator(){
       return false;
     }
   }
+
 
   this.checkIsPhone = str => {
     if(str.includes('+38')){
@@ -225,9 +230,11 @@ function Validator(){
   }
 }
 
+
+
 let validator = new Validator();
 
 validator.checkIsEmail('vasya.pupkin@gmail.com'); // true
 validator.checkIsDomain('google.com'); // true
-validator.checkIsDate('30.11.2019'); // true
+validator.checkIsDate('31.11.2000'); // true
 validator.checkIsPhone('+38 (066) 937-99-92');  // true

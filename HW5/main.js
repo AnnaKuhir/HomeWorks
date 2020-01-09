@@ -99,7 +99,7 @@ const setAllCreatedStudentsByConstructor = studentsArr => {
   let studentsOnContract = [];
 
   arrayOfStudents.forEach(function (student) {
-    if (student.ratingPoint <= 800) {
+    if (student.ratingPoint < 800) {
       student.isSelfPayment = true;
       studentsOnContract.push(student)
     } else {

@@ -99,26 +99,26 @@ const setAllCreatedStudentsByConstructor = studentsArr => {
   let studentsOnContract = [];
 
   arrayOfStudents.forEach(function (student) {
-    if (student.ratingPoint >= 800) {
-      student.isSelfPayment = false;
-      studentsOnBudget.push(student)
-    } else {
+    if (student.ratingPoint <= 800) {
       student.isSelfPayment = true;
       studentsOnContract.push(student)
+    } else {
+      student.isSelfPayment = false;
+      studentsOnBudget.push(student)
     }
   });
   console.log(studentsOnBudget);
   console.log(studentsOnContract);
 
-  studentsOnBudget.sort(function (a, b) {
-    if (a.ratingPoint === b.ratingPoint) {
-      if (a.schoolPoint > b.schoolPoint) {
-        b.isSelfPayment = true;
-        studentsOnContract.push(b);
+  studentsOnBudget.sort(function (studentOne, studentTwo) {
+    if (studentOne.ratingPoint === studentTwo.ratingPoint) {
+      if (studentOne.schoolPoint > studentTwo.schoolPoint) {
+        studentTwo.isSelfPayment = true;
+        studentsOnContract.push(studentTwo);
         return -1;
       }
     }
-    return b.ratingPoint - a.ratingPoint;
+    return studentTwo.ratingPoint - studentOne.ratingPoint;
   })
   console.log(studentsOnContract);
 
@@ -149,14 +149,9 @@ function CustomString() {
     console.log(str[0].toUpperCase() + str.slice(1))
     return str[0].toUpperCase() + str.slice(1);
   }
-
-  // this.ucWords = str =>{
-  //   console.log(str.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '))
-  // }
-
   this.ucWords = str => {
     //-----------------1------------------------
-    console.log(str.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' ')  );
+    console.log(str.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
 
     //------------------2-----------------------
     strVal = '';
@@ -167,7 +162,7 @@ function CustomString() {
     console.log(strVal);
     return strVal;
   }
-  
+
 }
 
 const myString = new CustomString();
@@ -176,15 +171,15 @@ myString.ucFirst('qwerty');
 myString.ucWords('qwerty qwerty qwerty');
 
 //--------------------------------------3--------------------------------------------------
-function Validator(){
-  this.checkIsEmail = str =>{
+function Validator() {
+  this.checkIsEmail = str => {
     let commercialAt = str.indexOf('@');
     let dots = str.indexOf('.');
 
-    if(str.length === 0){
+    if (str.length === 0) {
       console.log('Please, enter your email!');
       return false;
-    } else if(commercialAt < 1 || dots < 1){
+    } else if (commercialAt < 1 || dots < 1) {
       console.log('Incorrect email!!!');
       return false;
     } else {
@@ -193,11 +188,11 @@ function Validator(){
     }
   }
 
-  this.checkIsDomain = str =>{
-    if(str.includes('.com')){
+  this.checkIsDomain = str => {
+    if (str.includes('.com')) {
       console.log('true');
       return true;
-    } else{
+    } else {
       console.log('Incorrect domain!');
       return false;
     }
@@ -206,10 +201,10 @@ function Validator(){
   const isDigit = function isNumeric(str) {
     return /^\d+$/.test(str);
   }
-  
-  this.checkIsDate = str =>{
+
+  this.checkIsDate = str => {
     let arr = str.split('.');
-    if(arr[0] <= 31 && arr[1] <= 12 && isDigit(arr[2]) && arr[2].length === 4){
+    if (arr[0] <= 31 && arr[1] <= 12 && isDigit(arr[2]) && arr[2].length === 4) {
       console.log('true');
       return true;
     } else {
@@ -220,10 +215,10 @@ function Validator(){
 
 
   this.checkIsPhone = str => {
-    if(str.includes('+38')){
+    if (str.includes('+38')) {
       console.log('true');
       return true;
-    }else{
+    } else {
       console.log('Incorrect phone number!');
       return false;
     }

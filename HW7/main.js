@@ -177,7 +177,6 @@ console.log('//////////////  3  /////////////////////')
 
 console.log(student.getRankedPlace());
 
-
 //   4
 
 console.log('//////////////  4  /////////////////////')

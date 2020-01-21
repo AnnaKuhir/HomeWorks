@@ -43,6 +43,17 @@ let getUserByYear = year => {
   return result;
 }
 console.log(getUserByYear(2019));
+//3.1
+let getUsersByYear = year =>{
+  let getUser = [];
+  condidateArr.map(function(item){
+    if (Number(item.registered.split('-')[0]) === year){
+      getUser.push(item._id)
+    };
+  });
+  return getUser;
+}
+console.log(getUsersByYear(2019)); 
 
 console.log('------------------------------------------4-----------------------------------------')
 let getCondidatesByUnreadMsg = num => {

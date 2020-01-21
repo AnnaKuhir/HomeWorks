@@ -59,7 +59,7 @@ console.log('------------------------------------------4------------------------
 let getCondidatesByUnreadMsg = num => {
   let getMessage = []
   condidateArr.map((item) => {
-      if (+item.greeting.split('!')[1].trim().split(' ')[2] === num) {
+      if (Number(item.greeting.split('!')[1].trim().split(' ')[2]) === num) {
           getMessage.push(item)
       }
   })

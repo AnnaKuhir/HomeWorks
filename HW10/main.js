@@ -32,10 +32,6 @@ const companyArray = condidateArr.map((item) => {
 const newArray = [...new Set(companyArray)];
 console.log(newArray);
 
-console.log('------------------------------------------2.2-----------------------------------------')
-const newArray1 = companyArray.filter((item, index) => index === companyArray.indexOf(item));
-console.log(newArray1);
-
 console.log('------------------------------------------3-----------------------------------------')
 let getUserByYear = year => {
   let result = [];

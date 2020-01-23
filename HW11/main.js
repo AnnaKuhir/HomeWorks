@@ -18,8 +18,7 @@ let foo = async() =>{
     )
   }
   await promise();
-  let result = await promiseSecond();
-  console.log(result);
+  console.log(await promiseSecond());
 }
 
 foo()

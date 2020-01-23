@@ -34,7 +34,7 @@ let fooSecond = () =>{
     }
   )
 
-  let secondPromise = function(){
+   secondPromise = () => {
     return new Promise(
       function(resolve, reject){
         setTimeout(() => resolve( count = count + 1), 2000);

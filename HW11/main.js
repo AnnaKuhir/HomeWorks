@@ -42,7 +42,7 @@ let fooSecond = () =>{
     )
   }
 
-  let getPromise = function (){
+  getPromise =  () => {
     promise
       .then(secondPromise)
       .then(function(fullresult){console.log(fullresult)})

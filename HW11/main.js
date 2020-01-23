@@ -52,3 +52,15 @@ let fooSecond = () =>{
 }
 
 fooSecond()
+
+
+
+//------------------------------------------------------------2----------------------------------------------------------
+
+// const getBooks = async(n = 1) => {
+//   let books = await fetch(`https://www.googleapis.com/books/v1/volumes?q=quilting=${n}`);
+//   books = await books.json()
+//   return books.items
+// }
+
+// getBooks(1).then(books => console.log(books))

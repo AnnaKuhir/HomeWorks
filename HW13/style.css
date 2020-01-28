@@ -1,0 +1,274 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?xn7xrd');
+  src:  url('fonts/icomoon.eot?xn7xrd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?xn7xrd') format('truetype'),
+    url('fonts/icomoon.woff?xn7xrd') format('woff'),
+    url('fonts/icomoon.svg?xn7xrd#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fb:before {
+  content: "\e902";
+}
+.icon-tw:before {
+  content: "\e903";
+}
+.icon-google:before {
+  content: "\e904";
+}
+.icon-dribble:before {
+  content: "\e905";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 26px 10px 22px;
+  background-color: #800080;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} 
+
+.nav-logo a {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.nav-logo img {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  font-size: 0;
+  margin: 0 -5px;
+}
+
+nav li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 5px;
+}
+
+nav a {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 7px 10px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #f00;
+  text-align: center;
+}
+
+nav a:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.search-form input, .search-form button {
+	width: 200px;
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  padding: 7px 10px;
+  margin: 3px 0;
+	background: #dda0dd;
+  border-radius: 3px;
+  border: 0;
+  outline: none;
+}
+
+.search-form [type = button]{
+   width: 70px;
+   outline: none;
+}
+
+.search-form [type = button]:hover{
+  background-color: #000;
+  color: #f00;
+}
+
+.pizza-sort{
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  color: #800080;
+  margin: 15px;
+}
+
+.pizzaMenu{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #fff;
+}
+
+
+main .pizzaCard {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  border: 2px solid #800080;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+main .pizzaCard:hover {
+  box-shadow: 0 0 20px rgba(209, 6, 117, 0.5);
+}
+
+.pizzaCard img {
+display: inline-block;
+vertical-align: top;
+width: 100%;
+border-radius: 100%;
+}
+
+.pizzaCard h1{
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Lato', sans-serif;
+  color: #800080;
+}
+
+.pizzaCard p, span {
+  /* display: inline-block; */
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: #800080;
+}
+
+.pizzaCard .pizzaPrice{
+  font-size: 30px;
+}
+
+.pizzaCard span {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
+.pizzaCard button{
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  background-color: #880080;
+  padding: 10px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+
+
+footer {
+  padding: 26px 10px 22px;
+  background-color: #800080;
+}
+
+.footer-col{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer h3{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #f00;
+  margin-bottom: 30px;
+}
+
+footer ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+footer li{
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 5px;
+}
+
+footer a {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 10px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #f00;
+  text-align: center;
+}
+
+
+footer .menu:hover, .soc-link:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.social-links a {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #000;
+  border-radius: 100%;
+  color: #fff;
+  font-size: 25px;
+}

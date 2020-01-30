@@ -39,16 +39,7 @@ const pizzaCard = (pizza) => {
 //---------------------------------4--------------------------------------------
 
 button.addEventListener('click', function (event) {
-  let choosePizzaId = +button.parentNode.id.replace('pizza', '');
-  console.log(event)
   
-  newArr = [...pizzaList];
-  for (let value of newArr){
-    if(value.id === choosePizzaId){
-      value.isFavorite = true;
-    }
-  }
-  console.log(newArr)
 });
 
   // console.dir(card)

@@ -38,8 +38,9 @@ const pizzaCard = (pizza) => {
   
 //---------------------------------4--------------------------------------------
 
-button.addEventListener('click', function () {
-  let choosePizzaId = +button.parentNode.id;
+button.addEventListener('click', function (event) {
+  let choosePizzaId = +button.parentNode.id.replace('pizza', '');
+  console.log(event)
   
   newArr = [...pizzaList];
   for (let value of newArr){
@@ -149,6 +150,7 @@ const resetAllChoose = () => {
   caloryInputFrom.value = null;
   caloryInputTo.value = null;
   searchBtn.value = null;
+   
   renderMain(pizzaList)
 }
 

@@ -143,12 +143,12 @@ searchBtn.addEventListener('click', function () {
 //-------------------------------3---------------------------------------------
 
 const resetAllChoose = () => {
-  // chooseValue.value = null;
-  // priceInputFrom.value = null;
-  // priceInputTo.value = null;
-  // caloryInputFrom.value = null;
-  // caloryInputTo.value = null;
-  // searchBtn.value = null;
+  chooseValue.value = null;
+  priceInputFrom.value = null;
+  priceInputTo.value = null;
+  caloryInputFrom.value = null;
+  caloryInputTo.value = null;
+  searchBtn.value = null;
   renderMain(pizzaList)
 }
 

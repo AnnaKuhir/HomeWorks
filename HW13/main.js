@@ -34,9 +34,6 @@ const pizzaCard = (pizza) => {
   button.className = 'addPizza'
   button.innerText = 'Add'
   card.appendChild(button)
-
-
-
   console.dir(card)
   return card
 }
@@ -51,35 +48,131 @@ const renderMain = (list) => {
     mainEl.appendChild(card)
   }
 }
-
 renderMain(pizzaList)
 
 
 const search = document.getElementById('search');
-
 search.onclick = function () {
   const searchValue = document.getElementById('search-value');
   renderMain(pizzaList.filter(pizza => pizza.name.toLowerCase().includes(searchValue.value.toLowerCase())))
 }
 
 
-const renderSortedCards = (event) =>{
-  const newArr = [...pizzaList].sort((a,b) => {
-    type = event.target.value;
-    if (a.price < b.price){
-      return type  === 'asc' ? -1 : 1
+//-------------------------------1---------------------------------
+
+const getPizzaByNameAndComposition = (e) => {
+  const conponentSortArray = pizzaList.filter(pizza => 
+     pizza.composition.some(item => item.toLowerCase().includes(e.target.value.toLowerCase())))
+  const nameSortArray = pizzaList.filter(pizza => 
+    pizza.name.toLowerCase().includes(e.target.value.toLowerCase()));
+  let resultArray = nameSortArray.concat(conponentSortArray);
+
+  renderMain(resultArray);
+}
+const searchValue = document.getElementById('search-value');
+searchValue.addEventListener('input', getPizzaByNameAndComposition);
+
+
+
+//-------------------------------------2------------------------------
+
+
+const sortByPrice = (array) => {
+  const chooseValue = document.getElementById('pizza-sort');
+  const newArr = [...array].sort((a, b) => {
+    type = chooseValue.value;
+    if (a.price < b.price) {
+      return type === 'asc' ? -1 : 1
     }
 
-    if (a.price > b.price){
-      return type  === 'asc' ? 1 : -1
+    if (a.price > b.price) {
+      return type === 'asc' ? 1 : -1
     }
 
-    if (a.price === b.price){
+    if (a.price === b.price) {
       return 0
     }
   })
-  renderMain(newArr);
+  return newArr;
 }
+
+const searchBtn = document.getElementById('submit-btn')
+const priceInputFrom = document.getElementById('price-from')
+const priceInputTo = document.getElementById('price-to')
+const caloryInputFrom = document.getElementById('calory-from')
+const caloryInputTo = document.getElementById('calory-to')
+
+const filterByPrice = (array) => {
+  if(priceInputFrom.value && priceInputTo.value){
+    return  [...array].filter(pizza => pizza.price >= priceInputFrom.value && pizza.price <= priceInputTo.value)
+  }
+  else{
+    return array;
+  }
+}
+
+const filterByCalory = (array) => {
+  if (caloryInputFrom.value && caloryInputTo.value) {
+    return [...array].filter(pizza => pizza.caloricity >= caloryInputFrom.value && pizza.caloricity <= caloryInputTo.value)
+  }
+  else {
+    return array;
+  }
+}
+
+searchBtn.addEventListener('click', function () {
+  renderMain(sortByPrice(filterByCalory(filterByPrice(pizzaList))));
+})
+
+//-------------------------------3---------------------------------------------
+
+const resetAllChoose = () => {
+  // chooseValue.value = null;
+  // priceInputFrom.value = null;
+  // priceInputTo.value = null;
+  // caloryInputFrom.value = null;
+  // caloryInputTo.value = null;
+  // searchBtn.value = null;
+  renderMain(pizzaList)
+}
+
+const resetAllBtn = document.getElementById('reset-all');
+resetAllBtn.addEventListener('click', resetAllChoose);
+
+
+
+//---------------------------------4--------------------------------------------
+
+button.addEventListener('click', function (event) {
+
+})
+
+
+
+//--------------------------------------------------------------------------
+
+// const renderSortedCardsByCal = () => {
+//   const chooseValue = document.getElementById('pizza-sort');
+//   const newArr = [...pizzaList].sort((a, b) => {
+//     type = chooseValue.value;
+//     if (a.caloricity < b.caloricity) {
+//       return type === 'asc' ? -1 : 1
+//     }
+
+//     if (a.caloricity > b.caloricity) {
+//       return type === 'asc' ? 1 : -1
+//     }
+
+//     if (a.caloricity === b.caloricity) {
+//       return 0
+//     }
+//   })
+//   renderMain(newArr);
+// }
+
+// const chuse = document.getElementById('change');
+// chuse.addEventListener('click', renderSortedCardsByPrice);
+// chuse.addEventListener('click', renderSortedCardsByCal);
 
 
 

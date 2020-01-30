@@ -36,79 +36,95 @@
       </div>
     </header>
 
-    <form class="pizza-sort">
-      <div class="container">
-      <fieldset id="group1">
-        <input id = "radio-expensive" type="radio" value="asc" name="group1" onclick="renderSortedCards(event)"> <label for="radio-expensive">От дешевых к дорогим</label> <br>
-        <input id = "radio-cheap" type="radio" value="dsc" name="group1" onclick="renderSortedCards(event)"> <label for="radio-cheap">От дорогих к дешевым </label>
-      </fieldset>
-    </div>
+
+    <form action="#">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="pizza-sort">Options</label>
+        </div>
+        <select name="chouce-sort" class="custom-select" id="pizza-sort">
+          <option value="asc">По возрастанию цены</option>
+          <option value="dsc">По убыванию цены</option>
+        </select>
+      </div>
     </form>
+    <form class="form-inline my-2 my-lg-0">
+      <p> Укажите диапазон цены:</p>
+      <input type="number" class="form-control" id="price-from" placeholder="От: ">
+      <input type="number" class=" form-control" id="price-to" placeholder="До: ">
+    </form>
+    <form class="form-inline my-2 my-lg-0">
+      <p>Укажите диапазон калорий:</p>
+      <input type="number" class="form-control" id="calory-from" placeholder="От: ">
+      <input type="number" class=" form-control" id="calory-to" placeholder="До: ">
+      <button class="btn btn-outline-danger my-2 my-sm-0" id="submit-btn" type="button">Submit</button>
+    </form>
+    <div class="button-holder">
+      <button class="btn btn-outline-danger my-2 my-sm-0" id="reset-all" type="button">Сбросить фильтры</button>
+    </div>
 
+      <main>
 
+      </main>
 
-    <main>
-
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4 footer-col">
-            <div class="nav-logo">
-              <a href="#"><img src="images/logo.png" alt="Pizza Logotype"></a>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 footer-col">
+              <div class="nav-logo">
+                <a href="#"><img src="images/logo.png" alt="Pizza Logotype"></a>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-4 footer-col">
-            <ul>
-              <a href="#" class="menu">
-                <li>Пицца</li>
-              </a>
-            </ul>
-            <ul>
-              <a href="#" class="menu">
-                <li>Салаты</li>
-              </a>
-            </ul>
-            <ul>
-              <a href="#" class="menu">
-                <li>Первые блюда</li>
-              </a>
-            </ul>
-            <ul>
-              <a href="#" class="menu">
-                <li>Роллы</li>
-              </a>
-            </ul>
-            <ul>
-              <a href="#" class="menu">
-                <li>Десерты и напитки</li>
-              </a>
-            </ul>
-          </div>
-          <div id="contact" class="col-sm-4 footer-col">
-            <h3>Свяжитесь с нами</h3>
-            <div class="social-links">
+            <div class="col-sm-4 footer-col">
               <ul>
-                <li>
-                  <a href="#" class="soc-link"><i class="icon-fb"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="soc-link"><i class="icon-tw"></i></a>
-                </li>
-                <li>
-                  <a href="#"class="soc-link"><i class="icon-google"></i></a>
-                </li>
-                <li>
-                  <a href="#"class="soc-link"><i class="icon-dribble"></i></a>
-                </li>
+                <a href="#" class="menu">
+                  <li>Пицца</li>
+                </a>
               </ul>
+              <ul>
+                <a href="#" class="menu">
+                  <li>Салаты</li>
+                </a>
+              </ul>
+              <ul>
+                <a href="#" class="menu">
+                  <li>Первые блюда</li>
+                </a>
+              </ul>
+              <ul>
+                <a href="#" class="menu">
+                  <li>Роллы</li>
+                </a>
+              </ul>
+              <ul>
+                <a href="#" class="menu">
+                  <li>Десерты и напитки</li>
+                </a>
+              </ul>
+            </div>
+            <div id="contact" class="col-sm-4 footer-col">
+              <h3>Свяжитесь с нами</h3>
+              <div class="social-links">
+                <ul>
+                  <li>
+                    <a href="#" class="soc-link"><i class="icon-fb"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="soc-link"><i class="icon-tw"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="soc-link"><i class="icon-google"></i></a>
+                  </li>
+                  <li>
+                    <a href="#" class="soc-link"><i class="icon-dribble"></i></a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </footer>
+      </footer>
   </div>
 
   <script src="pizzaListArray.js"></script>

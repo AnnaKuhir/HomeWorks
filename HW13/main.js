@@ -40,7 +40,7 @@ const pizzaCard = (pizza) => {
 
 button.addEventListener('click', function () {
   let choosePizzaId = +button.parentNode.id;
-
+  
   newArr = [...pizzaList];
   for (let value of newArr){
     if(value.id === choosePizzaId){

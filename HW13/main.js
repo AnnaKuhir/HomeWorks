@@ -34,7 +34,23 @@ const pizzaCard = (pizza) => {
   button.className = 'addPizza'
   button.innerText = 'Add'
   card.appendChild(button)
-  console.dir(card)
+
+  
+//---------------------------------4--------------------------------------------
+
+button.addEventListener('click', function () {
+  let choosePizzaId = +button.parentNode.id;
+
+  newArr = [...pizzaList];
+  for (let value of newArr){
+    if(value.id === choosePizzaId){
+      value.isFavorite = true;
+    }
+  }
+  console.log(newArr)
+});
+
+  // console.dir(card)
   return card
 }
 
@@ -140,12 +156,6 @@ const resetAllBtn = document.getElementById('reset-all');
 resetAllBtn.addEventListener('click', resetAllChoose);
 
 
-
-//---------------------------------4--------------------------------------------
-
-button.addEventListener('click', function (event) {
-
-})
 
 
 

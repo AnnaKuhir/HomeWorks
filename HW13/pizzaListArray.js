@@ -43,7 +43,7 @@ const pizzaList = [
       id: 6,
       img: "images/6.jpeg",
       name: "Пепперони",
-      composition: ["Салями Пепперони", "моцарелла", "орегано", "соус Pomodoro"],
+      composition: ["салями пепперони", "моцарелла", "орегано", "соус Pomodoro"],
       caloricity: 1280,
       price: 119,
   },

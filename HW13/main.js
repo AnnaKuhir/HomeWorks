@@ -2,15 +2,15 @@
 const pizzaCardContainer = document.querySelector('.pizza-info')
 const pizzaCardEle = document.getElementById('pizzaContainer')
 
-pizzaCardContainer.addEventListener('click', function(e){
+pizzaCardContainer.addEventListener('click', function (e) {
   const elClassName = e.target.className;
-  if (elClassName === 'pizza-info'){
+  if (elClassName === 'pizza-info') {
     this.style.display = 'none'
   }
 })
 
 const renderPizzaCard = (pizza) => {
-  const teamplate =` 
+  const teamplate = ` 
   <div class="pizza-img"><img src = ${pizza.img} alt = 'Pizza'></div>
   <div class = "info-pizza">
   <h1>${pizza.name}</h1>
@@ -19,47 +19,40 @@ const renderPizzaCard = (pizza) => {
   ${pizza.composition.map(composition => {
     return `<li> ${composition} </li>`
   }).join('')
-}
+    }
   </ul>
   <p>Цена ${pizza.price}</p>
   <p>Калорийность ${pizza.caloricity}</p>
   </div>
   `
-  // return teamplate;
+
   pizzaCardEle.innerHTML = teamplate;
 }
 
 
 
 //-----------------------------15.2---------------------------------------
-// const newPizzaCardContainer = document.querySelector('.create-new-pizza')
-// const newPizzaCardElement = document.getElementById('newPizzaContainer')
 const addPizzaButton = document.getElementById('add-pizza')
 
-// newPizzaCardContainer.addEventListener('click', function(e){
-//   const elClassName = e.target.className;
-//   if (elClassName === 'create-new-pizza'){
-//     this.style.display = 'none'
-//   }
-// })
-
-const createNewPizza = () =>{
-  // debugger;
-  
-  const compositions = pizzaList[0].composition;
-  // const uniqCompositions = new Set(...compositions);
+const createNewPizza = () => {
+  const compositions = pizzaList.map(item => item.composition).flat(1);
+  const setCompose = Array.from(new Set(compositions)).sort();
   const template = `
   <form id='create-pizza-form'>
   <label  for="pizzaName">Введите название пиццы</label>
   <input type="text" id="pizzaName" name="pizza-name" placeholder="Название пиццы">
   <p> Выбери ингридиент </p>
   <div class = "compositions" id = "wrapper">
-  ${compositions.map(x =>{
+  ${setCompose.map(x => {
     return `<label class = "comp-list"><input type="checkbox">${x}</label>`
   }).join('')
-  }
+    }
   </div>
-  <p></p>
+  <p>Укажи цену</p>
+  <input type="text" id="pizzaPrice" name="pizza-price" placeholder="Цена">
+
+  <p>Укажи калории</p>
+  <input type="text" id="pizzaCaloricity" name="pizza-calorisity" placeholder="Калории">
   <div class = "create-btn">
   <button id="new-pizza-btn" type="button" onclick="createPizza()">Создать</button>
   </div>
@@ -68,47 +61,58 @@ const createNewPizza = () =>{
   pizzaCardEle.innerHTML = template
 }
 
-addPizzaButton.onclick = function (){
+addPizzaButton.onclick = function () {
   const pizza = pizzaList[0];
   createNewPizza(pizza)
   pizzaCardContainer.style.display = 'flex';
+
 }
 
 const createBtn = document.getElementById('new-pizza-btn');
 const formValue = document.getElementById('create-pizza-form')
 
-const createPizza = () =>  {
+const createPizza = () => {
   const pizzaName = document.getElementById('pizzaName');
+  const pizzaPrice = document.getElementById('pizzaPrice');
+  const pizzaCaloricity = document.getElementById('pizzaCaloricity');
   const checkboxWrapper = document.getElementById('wrapper')
   let newPizza = {};
   newPizza.composition = [];
-  if(pizzaName.value){
+  newPizza.selfCreated = true;
+  if (pizzaName) {
     newPizza.name = pizzaName.value;
   }
-  debugger;
+  if (pizzaPrice) {
+    newPizza.price = pizzaPrice.value;
+  }
+  if (pizzaCaloricity) {
+    newPizza.caloricity = pizzaCaloricity.value;
+  }
+
+
   let childEl = checkboxWrapper.getElementsByTagName('label');
   let children = Array.from(childEl);
-  children.forEach( item => {
+  children.forEach(item => {
     let input = item.getElementsByTagName('input')[0];
-    if (input && input.checked){
+    if (input && input.checked) {
       newPizza.composition.push(item.innerText)
     }
 
   })
-
-pizzaList.push(newPizza);
-// console.log(pizzaList)
-renderMain(pizzaList)
+  pizzaList.push(newPizza);
+  sessionStorage.setItem('pizzas', JSON.stringify(pizzaList));
+  renderMain(pizzaList);
+  pizzaCardContainer.style.display = 'none';
 }
 
 
 
 const pizzaCard = (pizza) => {
   //------------------------------------------15.2-------------------
-if(!pizza.composition){
-  pizza.composition =[];
-}
-//-------------------------------------------------------------------
+  if (!pizza.composition) {
+    pizza.composition = [];
+  }
+  //-------------------------------------------------------------------
   const card = document.createElement('div')
   card.className = 'pizzaCard';
   card.id = `pizza${pizza.id}`;
@@ -116,6 +120,13 @@ if(!pizza.composition){
   card.onclick = function () {
     renderPizzaCard(pizza)
     pizzaCardContainer.style.display = 'flex';
+  }
+
+  if (pizza.selfCreated) {
+    const selfElem = document.createElement('div')
+    selfElem.className = 'self-element'
+    selfElem.innerText = 'Your pizza'
+    card.appendChild(selfElem)
   }
 
   const img = document.createElement('img')
@@ -148,29 +159,34 @@ if(!pizza.composition){
   button.className = 'addPizza'
   button.innerText = 'Add'
   card.appendChild(button)
+  //---------------------------------4--------------------------------------------
 
-  
-//---------------------------------4--------------------------------------------
+  button.addEventListener('click', function (event) {
+    let choosePizzaId = +button.parentNode.id.replace('pizza', '');
+    console.log(event)
 
-button.addEventListener('click', function (event) {
-  let choosePizzaId = +button.parentNode.id.replace('pizza', '');
-  console.log(event)
-  
-  newArr = [...pizzaList];
-  for (let value of newArr){
-    if(value.id === choosePizzaId){
-      value.isFavorite = true;
+    newArr = [...pizzaList];
+    for (let value of newArr) {
+      if (value.id === choosePizzaId) {
+        value.isFavorite = true;
+      }
     }
-  }
-  console.log(newArr)
-});
+    console.log(newArr)
+  });
 
   // console.dir(card)
   return card
 }
 
 
-const renderMain = (list) => {
+const renderMain = () => {
+  let list = [];
+  const pizzas = sessionStorage.getItem('pizzas');
+  if(pizzas){
+    list = JSON.parse(pizzas);
+  }else{
+    list = pizzaList;
+  }
   const mainEl = document.querySelector('main')
   mainEl.innerHTML = ''
   for (let pizza of list) {
@@ -179,7 +195,7 @@ const renderMain = (list) => {
     mainEl.appendChild(card)
   }
 }
-renderMain(pizzaList)
+renderMain()
 
 
 const search = document.getElementById('search');
@@ -192,9 +208,9 @@ search.onclick = function () {
 //-------------------------------1---------------------------------
 
 const getPizzaByNameAndComposition = (e) => {
-  const conponentSortArray = pizzaList.filter(pizza => 
-     pizza.composition.some(item => item.toLowerCase().includes(e.target.value.toLowerCase())))
-  const nameSortArray = pizzaList.filter(pizza => 
+  const conponentSortArray = pizzaList.filter(pizza =>
+    pizza.composition.some(item => item.toLowerCase().includes(e.target.value.toLowerCase())))
+  const nameSortArray = pizzaList.filter(pizza =>
     pizza.name.toLowerCase().includes(e.target.value.toLowerCase()));
   let resultArray = nameSortArray.concat(conponentSortArray);
 
@@ -234,10 +250,10 @@ const caloryInputFrom = document.getElementById('calory-from')
 const caloryInputTo = document.getElementById('calory-to')
 
 const filterByPrice = (array) => {
-  if(priceInputFrom.value && priceInputTo.value){
-    return  [...array].filter(pizza => pizza.price >= priceInputFrom.value && pizza.price <= priceInputTo.value)
+  if (priceInputFrom.value && priceInputTo.value) {
+    return [...array].filter(pizza => pizza.price >= priceInputFrom.value && pizza.price <= priceInputTo.value)
   }
-  else{
+  else {
     return array;
   }
 }
@@ -264,7 +280,7 @@ const resetAllChoose = () => {
   caloryInputFrom.value = null;
   caloryInputTo.value = null;
   searchBtn.value = null;
-   
+
   renderMain(pizzaList)
 }
 

@@ -43,7 +43,7 @@ const addPizzaButton = document.getElementById('add-pizza')
 //   }
 // })
 
-const createNewPizza = (pizza) =>{
+const createNewPizza = () =>{
   // debugger;
   
   const compositions = pizzaList[0].composition;
@@ -53,13 +53,13 @@ const createNewPizza = (pizza) =>{
   <label  for="pizzaName">Введите название пиццы</label>
   <input type="text" id="pizzaName" name="pizza-name" placeholder="Название пиццы">
   <p> Выбери ингридиент </p>
-  <div class = "compositions">
+  <div class = "compositions" id = "wrapper">
   ${compositions.map(x =>{
-    const id = `f${(~~(Math.random()*1e8)).toString(5)}`;
-    return `<label class = "comp-list"><input type="checkbox" name="choose${id}" value="composition${id}" id = "composition${id}">${x}</label>`
+    return `<label class = "comp-list"><input type="checkbox">${x}</label>`
   }).join('')
   }
   </div>
+  <p></p>
   <div class = "create-btn">
   <button id="new-pizza-btn" type="button" onclick="createPizza()">Создать</button>
   </div>
@@ -78,16 +78,23 @@ const createBtn = document.getElementById('new-pizza-btn');
 const formValue = document.getElementById('create-pizza-form')
 
 const createPizza = () =>  {
-  const pizzaName = document.getElementById('pizzaName')
-
+  const pizzaName = document.getElementById('pizzaName');
+  const checkboxWrapper = document.getElementById('wrapper')
   let newPizza = {};
+  newPizza.composition = [];
   if(pizzaName.value){
     newPizza.name = pizzaName.value;
   }
+  debugger;
+  let childEl = checkboxWrapper.getElementsByTagName('label');
+  let children = Array.from(childEl);
+  children.forEach( item => {
+    let input = item.getElementsByTagName('input')[0];
+    if (input && input.checked){
+      newPizza.composition.push(item.innerText)
+    }
 
-  
-
-
+  })
 
 pizzaList.push(newPizza);
 // console.log(pizzaList)

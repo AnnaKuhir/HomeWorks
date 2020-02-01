@@ -62,7 +62,7 @@ const createNewPizza = () => {
 }
 
 addPizzaButton.onclick = function () {
-  const pizza = pizzaList[0];
+  const pizza = pizzaList;
   createNewPizza(pizza)
   pizzaCardContainer.style.display = 'flex';
 

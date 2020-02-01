@@ -31,7 +31,7 @@ const renderPizzaCard = (pizza) => {
 
 
 
-//-----------------------------15.2---------------------------------------
+//-----------------------------15.2 создание пиццы---------------------------------------
 const addPizzaButton = document.getElementById('add-pizza')
 
 const createNewPizza = () => {

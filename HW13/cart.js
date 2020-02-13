@@ -1,0 +1,1 @@
+const cartObj = JSON.parse(localStorage.getItem('cart')) || []

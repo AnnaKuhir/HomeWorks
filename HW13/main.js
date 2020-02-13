@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 //-----------------------------15.1---------------------------------------
 const pizzaCardContainer = document.querySelector('.pizza-info')
 const pizzaCardEle = document.getElementById('pizzaContainer')
@@ -100,7 +110,7 @@ const createPizza = () => {
 
   })
   pizzaList.push(newPizza);
-  sessionStorage.setItem('pizzas', JSON.stringify(pizzaList));
+  localStorage.setItem('pizzas', JSON.stringify(pizzaList));
   renderMain(pizzaList);
   pizzaCardContainer.style.display = 'none';
 }
@@ -159,6 +169,21 @@ const pizzaCard = (pizza) => {
   button.className = 'addPizza'
   button.innerText = 'Add'
   card.appendChild(button)
+  
+
+  const cart = document.createElement('button')
+  cart.className = 'cart-button'
+  cart.innerHTML  = 'Add to cart'
+  card.appendChild(cart)
+
+  card.addEventListener ('click', function(event){
+    debugger
+    const id = event.target;
+    const cartObj = JSON.parse(localStorage.getItem('cart')) || []
+    const selectedPizza = pizzaList.find
+
+
+  })
   //---------------------------------4--------------------------------------------
 
   button.addEventListener('click', function (event) {
@@ -181,7 +206,7 @@ const pizzaCard = (pizza) => {
 
 const renderMain = () => {
   let list = [];
-  const pizzas = sessionStorage.getItem('pizzas');
+  const pizzas = localStorage.getItem('pizzas');
   if(pizzas){
     list = JSON.parse(pizzas);
   }else{

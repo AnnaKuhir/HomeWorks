@@ -197,7 +197,7 @@ border-radius: 100%;
   right: 5px;
 }
 
-.pizzaCard button{
+.pizzaCard .addPizza{
   font-size: 18px;
   font-family: 'Lato', sans-serif;
   color: #fff;
@@ -209,6 +209,17 @@ border-radius: 100%;
   right: 5px;
 }
 
+.pizzaCard .cart-button{
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  background-color: #880080;
+  padding: 5px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
 
 
 footer {

@@ -1,0 +1,10 @@
+.users {
+    width: 800px;
+    min-height: 500px;
+    padding: 32px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
